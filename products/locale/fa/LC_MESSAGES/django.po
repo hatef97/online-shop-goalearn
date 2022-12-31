@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-31 21:29+0330\n"
-"PO-Revision-Date: 2022-12-31 21:36+0330\n"
+"PO-Revision-Date: 2022-12-31 22:06+0330\n"
 "Last-Translator: hatef barin <amir.barin76@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgstr "قیمت"
 
 #: .\models.py:15
 msgid "Active"
-msgstr "فعال"
+msgstr "موجود"
 
 #: .\models.py:16
 msgid "Cover"

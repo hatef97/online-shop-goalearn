@@ -13,7 +13,7 @@ class Product(models.Model):
     description = RichTextField(verbose_name=_("Description"))
     price = models.PositiveIntegerField(default=0, verbose_name=_("Price"))
     active = models.BooleanField(default=True, verbose_name=_("Active"))
-    cover = models.ImageField(upload_to='covers/', blank=True, verbose_name=_("Cover"))
+    cover = models.ImageField(upload_to='covers/', verbose_name=_("Cover"))
     product_quantity = models.PositiveIntegerField(default=0, verbose_name=_("Product quantity"))
     datetime_created = models.DateTimeField(default=timezone.now)
     datetime_modified = models.DateTimeField(auto_now=True)
