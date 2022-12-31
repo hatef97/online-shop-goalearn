@@ -5,8 +5,8 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 
 
-def create_user(email='user@example.com', password='testpass123'):
-    """ Create and return a new user """
+def create_user(email='accounts@example.com', password='testpass123'):
+    """ Create and return a new accounts """
     return get_user_model().objects.create_user(email, password)
 
 
@@ -14,7 +14,7 @@ class ModelTest(TestCase):
     """ Test models """
 
     def test_creat_user_with_email_successful(self):
-        """ Test creating a user with an email is successful """
+        """ Test creating a accounts with an email is successful """
         email = 'test@example.com'
         password = 'testpass123'
         user = get_user_model().objects.create_user(
@@ -38,7 +38,7 @@ class ModelTest(TestCase):
             self.assertEqual(user.email, expected)
 
     def test_new_user_without_email_raises_error(self):
-        """ Test that creating a user without an email raises a ValueError """
+        """ Test that creating a accounts without an email raises a ValueError """
         with self.assertRaises(ValueError):
             get_user_model().objects.create_user('', 'test123')
 

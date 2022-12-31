@@ -1,0 +1,64 @@
+{% extends '_base.html' %}
+
+{% load producttags %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}{{ books.title }}Products Detail{% endblock %}
+
+{% block content %}
+    <div class="container mt-5" dir="rtl">
+        <div class="">
+            <div class="">
+                <div class="d-flex justify-content-center">
+                    <div class="row w-sm-75 w-100">
+                        <div class="col-xs-12 col-md-3 d-flex justify-content-center">
+                            <div>
+                                {% if products.cover %}
+                                    <img src="{{ products.cover.url }}" class="img-fluid rounded-start" alt="...">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 text-center text-md-end mt-md-1 mt-4">
+                            <h1>{{ products.title }}</h1>
+                            <h5 class="small my-1"><span class="text-muted">ایجاد کننده: </span>{{ products.user }}</h5>
+                            {% if products.user == user %}
+                                <a href="{% url 'update_product' products.id %}" class="text-decoration-none">ویرایش</a>
+                                <span>|</span>
+                                <a href="{% url 'delete_product' products.id %}" class="text-decoration-none">حذف</a>
+                            {% endif %}
+                        </div>
+                        <div class="col-xs-12 col-md-3 d-flex flex-column">
+                            <h3 class="align-self-center pt-2 text-muted align-self-md-end">
+                                {{ products.price }}$
+
+                            </h3>
+                        </div>
+                        <div class="col-xs-12 col-md-3 d-flex flex-column">
+                            <h3 class="align-self-center pt-2 text-muted align-self-md-end">
+                                تعداد کالا:{{ products.product_quantity }}
+                            </h3>
+                        </div>
+                        <div class="col-xs-12 col-md-3 d-flex flex-column">
+                            {% if products.active %}
+                                <h3 class="align-self-center pt-2 text-muted align-self-md-end">
+                                    موجود
+                                </h3>
+                            {% else %}
+                                <h3 class="align-self-center pt-2 text-muted align-self-md-end">
+                                    موجود نیست
+                                </h3>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <div class="my-3 p-5 w-sm-75 w-100">
+                        {{ products.description|linebreaks }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

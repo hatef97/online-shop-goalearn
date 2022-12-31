@@ -1,0 +1,46 @@
+{% extends '_base.html' %}
+
+{% block page_title %}Products list{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="row flex-row-reverse">
+            {% for products in product_list %}
+                <div class="card m-2" style="max-width: 45%">
+                    <div class="row g-0 h-100" dir="rtl">
+                        <div class="col-md-4">
+                            {% if products.cover %}
+                                <img src="{{ products.cover.url }}" class="img-fluid rounded-start" alt="...">
+                            {% endif %}
+                        </div>
+                        <div class="col-md-8 h-100">
+                            <div class="d-flex flex-column justify-content-between h-100">
+                                <div class="card-body">
+                                    <a class="text-decoration-none" href="{% url 'product_detail' products.id %}"><h3
+                                            class="card-title"><strong>{{ products.title }}</strong></h3></a>
+                                    <p class="card-text pt-3">{{ products.description|truncatewords:15 }}</p>
+                                    <p class="text-muted">نویسنده: {{ products.user }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                </li>
+            {% endif %}
+            <li class="page-item"><a class="page-link" href="#">{{ page_obj.number }}</a></li>
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}
